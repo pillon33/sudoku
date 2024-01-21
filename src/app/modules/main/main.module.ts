@@ -6,6 +6,7 @@ import { SudokuCellComponent } from '../../components/sudoku-cell/sudoku-cell.co
 import { HttpClientModule } from '@angular/common/http';
 import { MainMenuComponent } from '../../components/main-menu/main-menu.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { SudokuService } from '../../services/sudoku.service';
 
 
 
@@ -27,5 +28,6 @@ import { BrowserModule } from '@angular/platform-browser';
     MainMenuComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [SudokuService],
 })
 export class MainModule { }
