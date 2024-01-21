@@ -13,8 +13,13 @@ export class SudokuBoardComponent implements OnInit {
   constructor(private service: SudokuService) {}
 
   ngOnInit(): void {
-    console.log("test");
-    this.sudokuBoardModel.deserialize(this.service.getBaseBoard());
+    this.service.getBaseBoard().subscribe((res) => {
+      if (res != undefined) {
+        console.log(res);
+        this.sudokuBoardModel.deserialize(res);
+        console.log(this.sudokuBoardModel);
+      }
+    });
     console.log(this.sudokuBoardModel);
   }
   
