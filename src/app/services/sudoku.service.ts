@@ -11,6 +11,7 @@ export class SudokuService {
   ) {}
 
   public getBaseBoard() {
+    console.log(environment.backendAddress + environment.defaultEndpoint)
     return this.http.get(environment.backendAddress + environment.defaultEndpoint);
   }
 }

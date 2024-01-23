@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-sudoku-cell',
+  selector: 'sudoku-cell',
   templateUrl: './sudoku-cell.component.html',
   styleUrl: './sudoku-cell.component.scss'
 })
