@@ -1,3 +1,24 @@
 .menuElement {
-    color: aqua;
+    background-color: #F2AFEF;
+    text-align: center;
+}
+
+.menuElement:hover {
+    background-color: #C499F3;
+}
+
+a.menuHref {
+    text-decoration: none;
+}
+
+a.menuHref:link {
+    color: #7360DF;
+}
+
+a.menuHref:visited {
+    color: #7360DF;
+}
+
+a.menuHref:hover {
+    color: #33186B;
 }

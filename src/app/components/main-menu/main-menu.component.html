@@ -1,4 +1,7 @@
-Main menu
 <ng-container *ngFor="let element of menuElements">
-    <div>{{element.menuTxt}}</div>
+    <a [href]="element.redirectPath" class="menuHref">
+        <div class="menuElement">
+            {{element.menuTxt}}
+        </div>
+    </a>
 </ng-container>

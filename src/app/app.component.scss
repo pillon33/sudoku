@@ -55,11 +55,12 @@
     width: 100%;
     min-height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     padding: 1rem;
     box-sizing: inherit;
     position: relative;
+    margin-left: 10cm;
   }
 
   .angular-logo {
@@ -167,9 +168,5 @@
   }
 
   .menu-bar {
-    background-color: aqua;
-  }
-
-  .app-content {
-    background-color: red;
+    width: 20%;
   }
