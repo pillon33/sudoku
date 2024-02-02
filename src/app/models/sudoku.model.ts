@@ -1,20 +1,15 @@
 import { SudokuDTO } from "./sudoku-dto.model";
 import { SudokuCalculationService } from "../services/sudoku-calculation.service";
+import { SudokuCell } from "./sudoku-cell.model";
 
 export class Sudoku {
-    public cells: number[][] = [];
-    public mask: boolean[][] = [];
-    public values: number[][] = [];
+    public cells: SudokuCell[][] = [];
 
-    Sudoku() {
-        let cellsTmp: number[][] = [];
-        let maskTmp: boolean[][] = [];
-        let valuesTmp: number[][] = [];
+    constructor() {
+        let cellsTmp: SudokuCell[][] = [];
 
         for (let row = 0; row < 9; row++) {
-            let tableRow: number[] = [];
-            let maskRow: boolean[] = [];
-            let valuesRow: number[] = [];
+            let tableRow: SudokuCell[] = [];
             
             for (let col = 0; col < 9; col++) {
                 let idx = SudokuCalculationService.getIdxFromCoordinates(row, col);
@@ -23,30 +18,22 @@ export class Sudoku {
                 const maskElement = true;
                 const valuesElement = 0;
                 
-                tableRow.push(element);
-                maskRow.push(maskElement);
-                valuesRow.push(valuesElement);
+                let cell: SudokuCell = new SudokuCell(element, maskElement, valuesElement)
+
+                tableRow.push(cell);
             }
 
             cellsTmp.push(tableRow);
-            maskTmp.push(maskRow);
-            valuesTmp.push(valuesRow);
         }
 
         this.cells = cellsTmp;
-        this.mask = maskTmp;
-        this.values = valuesTmp;
     }
 
     public fromDTO(dto: SudokuDTO): Sudoku {
-        let cellsTmp: number[][] = [];
-        let maskTmp: boolean[][] = [];
-        let valuesTmp: number[][] = [];
+        let cellsTmp: SudokuCell[][] = [];
 
         for (let row = 0; row < 9; row++) {
-            let tableRow: number[] = [];
-            let maskRow: boolean[] = [];
-            let valuesRow: number[] = [];
+            let tableRow: SudokuCell[] = [];
             
             for (let col = 0; col < 9; col++) {
                 let idx = SudokuCalculationService.getIdxFromCoordinates(row, col);
@@ -55,25 +42,15 @@ export class Sudoku {
                 const maskElement = dto.mask.at(idx);
                 const valuesElement = (maskElement === true ? (element !== undefined ? element : 0) : 0);
                 
-                if (element !== undefined) {
-                    tableRow.push(element);
-                }
+                let cell: SudokuCell = new SudokuCell(element, maskElement, valuesElement);
 
-                if (maskElement !== undefined) {
-                    maskRow.push(maskElement);
-                }
-
-                valuesRow.push(valuesElement);
+                tableRow.push(cell);
             }
 
             cellsTmp.push(tableRow);
-            maskTmp.push(maskRow);
-            valuesTmp.push(valuesRow);
         }
 
         this.cells = cellsTmp;
-        this.mask = maskTmp;
-        this.values = valuesTmp;
 
         return this;
     }
