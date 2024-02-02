@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class SudokuCellComponent {
   @Input("value") 
-  value: string = '';
+  value: number = 0;
 
   @Input("hasError")
   hasError: boolean = false;

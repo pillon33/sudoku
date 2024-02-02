@@ -1,13 +1,10 @@
-<ng-container *ngFor="let number of sudokuBoardModel.cells; index as i;">
-    <sudoku-cell [value]="number.toString()"></sudoku-cell>
-    <ng-container *ngIf="(i + 1) % 9 == 0">
-        <br/>
-    </ng-container>
-</ng-container>
-<!-- <table>
-    <tr *ngFor="let row of [].constructor(9); index as r;">
-        <td *ngFor="let col of [].constructor(9); index as c" ngSkipHydration>
-            <sudoku-cell [value]="(sudokuBoardModel.cells[r*9 + c] || '').toString()"></sudoku-cell>
-        </td>
-    </tr>
-</table> -->
+
+<table>
+    <tbody>
+        <tr *ngFor="let row of sudokuBoardModel.values; index as r;">
+            <td *ngFor="let col of row; index as c">
+                <sudoku-cell [value]="col"></sudoku-cell>
+            </td>
+        </tr>
+    </tbody>
+</table>

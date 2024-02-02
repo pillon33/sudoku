@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Sudoku } from '../../models/sudoku.model';
 import { SudokuService } from '../../services/sudoku.service';
+import { SudokuCalculationService } from '../../services/sudoku-calculation.service';
 import { SudokuDTO } from '../../models/sudoku-dto.model';
 
 @Component({
@@ -9,16 +10,24 @@ import { SudokuDTO } from '../../models/sudoku-dto.model';
   styleUrl: './sudoku-board.component.scss'
 })
 export class SudokuBoardComponent implements OnInit {
-  sudokuBoardModel: SudokuDTO = new SudokuDTO();
+  sudokuBoardModel: Sudoku = new Sudoku();
+  sudokuDtoModel: SudokuDTO = new SudokuDTO();
 
-  constructor(private service: SudokuService) {}
+  constructor(
+    private service: SudokuService
+    ) {}
 
   ngOnInit(): void {
     this.service.getBaseBoard().subscribe((res) => {
       if (res != undefined) {
-        this.sudokuBoardModel.deserialize(res);
+        this.sudokuDtoModel.deserialize(res);
+        this.sudokuBoardModel.fromDTO(this.sudokuDtoModel);
       }
     });
+  }
+
+  getIdxFromCoordinates(row: number, col: number) {
+    return SudokuCalculationService.getIdxFromCoordinates(row, col);
   }
   
 }

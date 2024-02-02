@@ -2,7 +2,7 @@ export class SudokuDTO {
     public cells: number[] = [];
     public mask: boolean[] = [];
 
-    Sudoku() {}
+    SudokuDTO() {}
 
     public deserialize(input: any): SudokuDTO {
         this.cells = input.cells;
