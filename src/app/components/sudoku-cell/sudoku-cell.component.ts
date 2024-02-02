@@ -14,4 +14,21 @@ export class SudokuCellComponent {
 
   @Input("isClue")
   isClue: boolean = false;
+
+  cellStyleDictionary = {
+    clue: 'cellWithClue',
+    error: 'cellWithError',
+    empty: 'emptyCell',
+    cell: 'cell'
+  }
+
+  public getCellClass(): string {
+    return this.isClue ? 
+      this.cellStyleDictionary.clue : 
+      (this.hasError ? 
+        this.cellStyleDictionary.error : 
+        (this.value === 0 ? 
+          this.cellStyleDictionary.empty : 
+          this.cellStyleDictionary.cell));
+  }
 }
