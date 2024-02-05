@@ -3,7 +3,7 @@
     <tbody>
         <tr *ngFor="let row of sudokuBoardModel.cells; index as r;">
             <td *ngFor="let cell of row; index as c">
-                <sudoku-cell [value]="cell.value" [isClue]="cell.mask"></sudoku-cell>
+                <sudoku-cell [value]="cell.value" [isClue]="cell.mask" [isSelected]="cell.isSelected" (click)="onCellClick(r, c);"></sudoku-cell>
             </td>
         </tr>
     </tbody>

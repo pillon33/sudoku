@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Sudoku } from '../../models/sudoku.model';
 import { SudokuService } from '../../services/sudoku.service';
 import { SudokuCalculationService } from '../../services/sudoku-calculation.service';
@@ -10,11 +10,19 @@ import { SudokuDTO } from '../../models/sudoku-dto.model';
   styleUrl: './sudoku-board.component.scss'
 })
 export class SudokuBoardComponent implements OnInit {
-  @Input() sudokuBoardModel: Sudoku = new Sudoku();
+  @Input("board") 
+  sudokuBoardModel: Sudoku = new Sudoku();
+
+  @Output("click") 
+  clickEvent: EventEmitter<number[]> = new EventEmitter();
 
   constructor() {}
 
   ngOnInit(): void {
+  }
+
+  onCellClick(row: number, col: number) {
+    console.log("row : %d, col: %d", row, col);
   }
   
 }

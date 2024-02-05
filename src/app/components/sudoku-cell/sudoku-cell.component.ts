@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'sudoku-cell',
@@ -15,20 +15,29 @@ export class SudokuCellComponent {
   @Input("isClue")
   isClue: boolean = false;
 
+  @Input("isSelected")
+  isSelected: boolean = false;
+
   cellStyleDictionary = {
     clue: 'cellWithClue',
     error: 'cellWithError',
     empty: 'emptyCell',
+    selected: 'selectedCell',
+    selectedError: 'selectedCellWithError',
     cell: 'cell'
   }
 
   public getCellClass(): string {
-    return this.isClue ? 
-      this.cellStyleDictionary.clue : 
-      (this.hasError ? 
-        this.cellStyleDictionary.error : 
-        (this.value === 0 ? 
-          this.cellStyleDictionary.empty : 
-          this.cellStyleDictionary.cell));
+    if (this.isClue) return this.cellStyleDictionary.clue;
+
+    if (this.hasError) return this.isSelected ? this.cellStyleDictionary.selectedError : this.cellStyleDictionary.error;
+
+    let style = '';
+
+    if (this.isSelected) style += this.cellStyleDictionary.selected;
+
+    if (this.value === 0) return style + ' ' + this.cellStyleDictionary.empty;
+    
+    return style + ' ' + this.cellStyleDictionary.cell;
   }
 }

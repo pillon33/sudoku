@@ -11,6 +11,14 @@
     cursor: pointer;
 }
 
+.selectedCell {
+    background-color: #DDDDDD;
+}
+
+.selectedCellWithError {
+    background-color: #990000;
+}
+
 .cellWithError {
     border: 0.5px;
     border-color: #111111;
@@ -44,7 +52,8 @@
     font-family: monospace;
     font-size: 20px;
     font-weight: 100;
-    color: #FFFFFF;
+    color: transparent;
+    user-select: none;
     padding-left: 10px;
     padding-right: 10px;
     cursor: pointer;
