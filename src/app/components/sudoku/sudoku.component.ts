@@ -24,4 +24,10 @@ export class SudokuComponent {
       }
     });
   }
+
+  onCellClick(event: any) {
+    let row: number = event[0];
+    let col: number = event[1];
+    console.log("row: %d, col: %d", row, col);
+  }
 }

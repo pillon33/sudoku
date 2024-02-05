@@ -13,7 +13,7 @@ export class SudokuBoardComponent implements OnInit {
   @Input("board") 
   sudokuBoardModel: Sudoku = new Sudoku();
 
-  @Output("click") 
+  @Output("cellClick") 
   clickEvent: EventEmitter<number[]> = new EventEmitter();
 
   constructor() {}
@@ -22,7 +22,7 @@ export class SudokuBoardComponent implements OnInit {
   }
 
   onCellClick(row: number, col: number) {
-    console.log("row : %d, col: %d", row, col);
+    this.clickEvent.emit([row, col]);
   }
   
 }
