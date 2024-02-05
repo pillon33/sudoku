@@ -9,6 +9,7 @@
     padding-left: 10px;
     padding-right: 10px;
     cursor: pointer;
+    user-select: none;
 }
 
 .selectedCell {
@@ -16,7 +17,18 @@
 }
 
 .selectedCellWithError {
+    border: 0.5px;
+    border-color: #111111;
+    border-style: solid;
+    font-family: monospace;
+    font-size: 20px;
+    font-weight: 100;
+    color: #111111;
     background-color: #990000;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+    user-select: none;
 }
 
 .cellWithError {
@@ -27,9 +39,11 @@
     font-size: 20px;
     font-weight: 100;
     color: #111111;
+    background-color: #FF0000;
     padding-left: 10px;
     padding-right: 10px;
     cursor: pointer;
+    user-select: none;
 }
 
 .cellWithClue {
@@ -43,6 +57,7 @@
     background-color: #BBBBBB;
     padding-left: 10px;
     padding-right: 10px;
+    user-select: none;
 }
 
 .emptyCell {
