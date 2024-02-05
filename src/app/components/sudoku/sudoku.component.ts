@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Sudoku } from '../../models/sudoku.model';
 import { SudokuDTO } from '../../models/sudoku-dto.model';
 import { SudokuService } from '../../services/sudoku.service';
+import { SudokuCell } from '../../models/sudoku-cell.model';
 
 @Component({
   selector: 'app-sudoku',
@@ -26,8 +27,34 @@ export class SudokuComponent {
   }
 
   onCellClick(event: any) {
+    let cell: SudokuCell = this.getCellFromEvent(event);
+
+    if (cell.mask) {
+      return;
+    }
+
+    this.clearCellSelection();
+
+    cell.isSelected = !cell.isSelected;
+  }
+
+  clearCellSelection() {
+    this.sudokuBoardModel.cells.forEach((row: SudokuCell[]) => {
+      row.forEach((cell: SudokuCell) => {
+        cell.isSelected = false;
+      })
+    })
+  }
+
+  getCellFromEvent(event: any): SudokuCell {
     let row: number = event[0];
     let col: number = event[1];
-    console.log("row: %d, col: %d", row, col);
+    let optional: SudokuCell | undefined = this.sudokuBoardModel.cells.at(row)?.at(col);
+
+    if (optional === undefined) {
+      throw new Error("Cell not found.");
+    }
+
+    return optional;
   }
 }
