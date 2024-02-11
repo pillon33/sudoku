@@ -17,6 +17,8 @@ export class SudokuComponent {
   
   private selectedCellCoordinates: number[] = [-1, -1];
 
+  solvedMsg = 'Sudoku solved!';
+
   constructor(
     private service: SudokuService
     ) {}
@@ -85,6 +87,26 @@ export class SudokuComponent {
       cell.value = +(event.key);
 
       this.clearCellSelection();
+
+      if (this.isSolved()) {
+        setTimeout(() => {
+          alert(this.solvedMsg);
+        }, 1000);
+      }
     }
+  }
+
+  isSolved(): boolean {
+    let result = true;
+
+    this.sudokuBoardModel.cells.forEach((row: SudokuCell[]) => {
+      row.forEach((cell: SudokuCell) => {
+        if (cell.value !== cell.cell) {
+          result = false;
+        }
+      });
+    });
+
+    return result;
   }
 }
