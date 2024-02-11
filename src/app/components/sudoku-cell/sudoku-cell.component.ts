@@ -23,8 +23,7 @@ export class SudokuCellComponent {
     error: 'cellWithError',
     empty: 'emptyCell',
     selected: 'selectedCell',
-    selectedError: 'selectedCellWithError',
-    cell: 'cell'
+    selectedError: 'selectedCellWithError'
   }
 
   public getCellClass(): string {
@@ -38,6 +37,6 @@ export class SudokuCellComponent {
 
     if (this.value === 0) return style + ' ' + this.cellStyleDictionary.empty;
     
-    return style + ' ' + this.cellStyleDictionary.cell;
+    return style;
   }
 }
