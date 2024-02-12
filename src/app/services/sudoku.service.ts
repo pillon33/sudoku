@@ -10,7 +10,7 @@ export class SudokuService {
     private http: HttpClient
   ) {}
 
-  public getBaseBoard() {
-    return this.http.get(environment.backendAddress + environment.defaultEndpoint);
+  public getBoard(path: string) {
+    return this.http.get(environment.backendAddress + path);
   }
 }

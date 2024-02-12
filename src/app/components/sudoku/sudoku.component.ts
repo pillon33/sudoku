@@ -3,6 +3,7 @@ import { Sudoku } from '../../models/sudoku.model';
 import { SudokuDTO } from '../../models/sudoku-dto.model';
 import { SudokuService } from '../../services/sudoku.service';
 import { SudokuCell } from '../../models/sudoku-cell.model';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-sudoku',
@@ -24,7 +25,7 @@ export class SudokuComponent {
     ) {}
 
   ngOnInit(): void {
-    this.service.getBaseBoard().subscribe((res) => {
+    this.service.getBoard(environment.defaultEndpoint).subscribe((res) => {
       if (res != undefined) {
         this.sudokuDtoModel.deserialize(res);
         this.sudokuBoardModel.fromDTO(this.sudokuDtoModel);
@@ -91,7 +92,7 @@ export class SudokuComponent {
       if (this.isSolved()) {
         setTimeout(() => {
           alert(this.solvedMsg);
-        }, 1000);
+        }, 100);
       }
     }
   }
