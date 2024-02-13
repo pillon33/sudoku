@@ -18,14 +18,20 @@ export class SudokuComponent {
   
   private selectedCellCoordinates: number[] = [-1, -1];
 
-  solvedMsg = 'Sudoku solved!';
+  solvedMsg: string = 'Sudoku solved!';
+  numberOfFields: number = 5;
 
   constructor(
     private service: SudokuService
     ) {}
 
   ngOnInit(): void {
-    this.service.getBoard(environment.defaultEndpoint).subscribe((res) => {
+    
+  }
+
+  getNewPuzzle() {
+    this.service.getBoardWithNumberOfFields(environment.defaultEndpoint, this.numberOfFields).subscribe((res) => {
+      console.log(res);
       if (res != undefined) {
         this.sudokuDtoModel.deserialize(res);
         this.sudokuBoardModel.fromDTO(this.sudokuDtoModel);
@@ -57,6 +63,16 @@ export class SudokuComponent {
       });
     });
     this.selectedCellCoordinates = [-1, -1];
+  }
+
+  clearCells() {
+    this.sudokuBoardModel.cells.forEach((row: SudokuCell[]) => {
+      row.forEach((cell: SudokuCell) => {
+        if (!cell.mask) {
+          cell.value = 0;
+        }
+      });
+    });
   }
 
   getCellFromEvent(event: any): SudokuCell {

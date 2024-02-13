@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MainMenuComponent } from '../../components/main-menu/main-menu.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { SudokuService } from '../../services/sudoku.service';
+import { ResolverVisualisationComponent } from '../../resolver-visualisation/resolver-visualisation.component'; 
+import { FormsModule } from '@angular/forms'; 
 
 
 
@@ -15,17 +17,20 @@ import { SudokuService } from '../../services/sudoku.service';
     SudokuComponent,
     SudokuBoardComponent,
     SudokuCellComponent,
-    MainMenuComponent
+    MainMenuComponent,
+    ResolverVisualisationComponent
   ],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   exports: [
     SudokuComponent,
     SudokuBoardComponent,
     SudokuCellComponent,
-    MainMenuComponent
+    MainMenuComponent,
+    ResolverVisualisationComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [SudokuService],

@@ -1,1 +1,9 @@
 <sudoku-board [board]="sudokuBoardModel" (cellClick)="onCellClick($event)"></sudoku-board>
+<div>
+    <label>
+        <input [(ngModel)]="numberOfFields" type="range" id="hiddenFields" name="hiddenFields" min="5" max="60" step="5" />
+        Hidden fields: {{numberOfFields}}
+    </label>
+    <button (click)="getNewPuzzle()">Get new puzzle</button>
+    <button (click)="clearCells()">Clear all fields</button>
+  </div>
