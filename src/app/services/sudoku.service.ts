@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment'
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { MenuElement } from '../models/menu-element.type';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SudokuService {
+  public baseUrl = environment.backendAddress;
   constructor(
     private http: HttpClient
   ) {}
@@ -15,11 +18,17 @@ export class SudokuService {
   }
 
   public getBoardWithNumberOfFields(path: string, numberOfFields: number) {
-    const url = `${environment.backendAddress}${path}${environment.getPuzzleEndpoint}?numberOfFields=${numberOfFields}`;
-    let params: HttpParams = new HttpParams({fromString: `numberOfFields=${numberOfFields}`});
-    let headers: HttpHeaders = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*'
-    });
-    return this.http.get(url, {params: params, headers: headers}); //{params: params, headers: headers} 
+    const url = `${path}${environment.getPuzzleEndpoint}`;
+
+    let params: HttpParams = new HttpParams({});
+    params = params.append("numberOfFields", numberOfFields)
+    
+    return this.http.get(this.baseUrl + url, {params: params});
+  }
+
+  public getAvailableResolversList(): Observable<Object[]> {
+    const url = `${environment.getAvailableResolversEndpoint}`;
+
+    return this.http.get(this.baseUrl + url) as (Observable<Object[]>);
   }
 }

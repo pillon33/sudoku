@@ -1,5 +1,7 @@
 export const environment = {
     backendAddress: "http://localhost:8080/sudoku-api",
     defaultEndpoint: "/backtracking",
-    getPuzzleEndpoint: "/getPuzzle"
+    getPuzzleEndpoint: "/getPuzzle",
+    getMovesEndpoint: "/getMoves",
+    getAvailableResolversEndpoint: "/resolvers"
 };

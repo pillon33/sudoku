@@ -9,14 +9,14 @@
 
 a.menuHref {
     text-decoration: none;
+    color: #7360DF;
+    user-select: none;
+    cursor: pointer;
 }
 
-a.menuHref:link {
-    color: #7360DF;
-}
-
-a.menuHref:visited {
-    color: #7360DF;
+.selected {
+    color: #33186B;
+    cursor: pointer;
 }
 
 a.menuHref:hover {

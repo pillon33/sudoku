@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 import { Sudoku } from '../../models/sudoku.model';
 import { SudokuDTO } from '../../models/sudoku-dto.model';
 import { SudokuService } from '../../services/sudoku.service';
@@ -21,16 +21,24 @@ export class SudokuComponent {
   solvedMsg: string = 'Sudoku solved!';
   numberOfFields: number = 5;
 
+  @Input("gameMode")
+  gameMode: string = '';
+
+  
+  @Input("resolver")
+  resolver: string = '';
+
   constructor(
     private service: SudokuService
     ) {}
 
   ngOnInit(): void {
-    
+
   }
 
   getNewPuzzle() {
-    this.service.getBoardWithNumberOfFields(environment.defaultEndpoint, this.numberOfFields).subscribe((res) => {
+    console.log(this.resolver)
+    this.service.getBoardWithNumberOfFields(this.resolver, this.numberOfFields).subscribe((res) => {
       console.log(res);
       if (res != undefined) {
         this.sudokuDtoModel.deserialize(res);
