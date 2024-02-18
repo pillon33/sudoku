@@ -31,9 +31,11 @@ export class MainMenuComponent implements OnInit {
     this.getResolvers();
   }
 
-  // getClass(element: MenuElement): string {
-  //   return 'menuHref ' + element.name === this.selectedResolver.name ? 'selected' : '';
-  // }
+  getClass(element: MenuElement): string {
+    let result = 'menuElement ' + (element.name === this.selectedResolver.name ? 'selected' : '');
+    console.log(result);
+    return result;
+  }
 
   getResolvers() {
     this.service.getAvailableResolversList().subscribe((res) => {

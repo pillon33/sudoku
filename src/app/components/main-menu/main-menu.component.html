@@ -1,6 +1,6 @@
 <ng-container *ngFor="let element of menuElements">
     <a class="menuHref" (click)="selectResolver(element)"> <!-- [ngClass]="getClass(element)" -->
-        <div class="menuElement">
+        <div [ngClass]="getClass(element)">
             {{element.menuTxt}}
         </div>
     </a>
