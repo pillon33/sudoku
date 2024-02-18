@@ -33,7 +33,6 @@ export class MainMenuComponent implements OnInit {
 
   getClass(element: MenuElement): string {
     let result = 'menuElement ' + (element.name === this.selectedResolver.name ? 'selected' : '');
-    console.log(result);
     return result;
   }
 

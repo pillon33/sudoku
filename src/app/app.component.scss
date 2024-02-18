@@ -60,7 +60,7 @@
     padding: 1rem;
     box-sizing: inherit;
     position: relative;
-    margin-left: 10cm;
+    margin-left: 5cm;
   }
 
   .angular-logo {
@@ -168,5 +168,10 @@
   }
 
   .menu-bar {
-    width: 20%;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+
+  .menu {
+    width: 7cm;
   }

@@ -5,10 +5,10 @@ import { SudokuBoardComponent } from '../../components/sudoku-board/sudoku-board
 import { SudokuCellComponent } from '../../components/sudoku-cell/sudoku-cell.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MainMenuComponent } from '../../components/main-menu/main-menu.component';
-import { BrowserModule } from '@angular/platform-browser';
 import { SudokuService } from '../../services/sudoku.service';
 import { ResolverVisualisationComponent } from '../../resolver-visualisation/resolver-visualisation.component'; 
 import { FormsModule } from '@angular/forms'; 
+import { LandingPageComponent } from '../../components/landing-page/landing-page.component';
 
 
 
@@ -18,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     SudokuBoardComponent,
     SudokuCellComponent,
     MainMenuComponent,
-    ResolverVisualisationComponent
+    ResolverVisualisationComponent,
+    LandingPageComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +31,8 @@ import { FormsModule } from '@angular/forms';
     SudokuBoardComponent,
     SudokuCellComponent,
     MainMenuComponent,
-    ResolverVisualisationComponent
+    ResolverVisualisationComponent,
+    LandingPageComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [SudokuService],

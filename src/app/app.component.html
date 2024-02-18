@@ -1,10 +1,11 @@
 <main class="main">
-  <div class="content">
+  <div class="menu">
     <app-main-menu class="menu-bar " 
     (selectedMode)="onGameModeChange($event);" 
     (selectedResolver)="onResolverChange($event)">
     </app-main-menu>
-
+  </div>
+  <div class="content">
     <router-outlet class="app-content" (activate)="onOutletLoaded($event)"></router-outlet>
   </div>
 </main>
