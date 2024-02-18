@@ -20,7 +20,6 @@ export class AppComponent {
 
   onResolverChange(event: string) {
     this.resolver = event;
-    console.log(this.resolver);
   }
 
   onGameModeChange(event: string) {

@@ -37,7 +37,6 @@ export class SudokuComponent {
   }
 
   getNewPuzzle() {
-    console.log(this.resolver)
     this.service.getBoardWithNumberOfFields(this.resolver, this.numberOfFields).subscribe((res) => {
       console.log(res);
       if (res != undefined) {

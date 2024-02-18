@@ -44,7 +44,6 @@ export class MainMenuComponent implements OnInit {
   }
 
   selectResolver(element: MenuElement) {
-    console.log(element);
     this.selectedResolver = element;
     this.resolver.emit(element.redirectPath);
   }
