@@ -1,6 +1,10 @@
 .menuElement {
     background-color: #F2AFEF;
     text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .menuElement:hover {
@@ -21,4 +25,34 @@ a.menuHref {
 
 a.menuHref:hover {
     color: #33186B;
+}
+
+.main {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: inherit;
+    position: relative;
+}
+
+.menuLeft {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: inherit;
+    position: relative;
+}
+
+.menuRight {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: inherit;
+    position: relative;
 }

@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MenuElement } from '../../models/menu-element.type';
 import { SudokuService } from '../../services/sudoku.service';
 import { environment } from '../../../environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-menu',
@@ -24,7 +25,8 @@ export class MainMenuComponent implements OnInit {
   mode: EventEmitter<string> = new EventEmitter();
 
   constructor(
-    private service: SudokuService
+    private service: SudokuService,
+    private router: Router
     ) {}
   
   ngOnInit(): void {
@@ -47,6 +49,21 @@ export class MainMenuComponent implements OnInit {
   selectResolver(element: MenuElement) {
     this.selectedResolver = element;
     this.resolver.emit(element.redirectPath);
+  }
+
+  onGameModeSelection(mode: string) {
+    switch (mode) {
+      case 'sudoku':
+        this.router.navigate(['/sudoku']);
+        break;
+  
+      case 'visualisation':
+        this.router.navigate(['/visualisation']);
+        break;
+
+      default:
+        break;
+    }
   }
 
 }

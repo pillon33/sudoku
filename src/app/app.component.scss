@@ -52,9 +52,9 @@
   }
 
   main {
-    width: 100%;
+    width: 70%;
     min-height: 100vh;
-    display: flex;
+    // display: flex;
     justify-content: left;
     align-items: center;
     padding: 1rem;
@@ -69,9 +69,8 @@
 
   .content {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     width: 100%;
-    max-width: 700px;
     margin-bottom: 3rem;
   }
 
@@ -173,5 +172,5 @@
   }
 
   .menu {
-    width: 7cm;
+    width: 100%;
   }

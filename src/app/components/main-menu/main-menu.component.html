@@ -1,7 +1,23 @@
-<ng-container *ngFor="let element of menuElements">
-    <a class="menuHref" (click)="selectResolver(element)"> <!-- [ngClass]="getClass(element)" -->
-        <div [ngClass]="getClass(element)">
-            {{element.menuTxt}}
-        </div>
-    </a>
-</ng-container>
+<div class="main">
+    <div class="menuLeft">
+        <a class="menuHref" (click)="onGameModeSelection('sudoku')">
+            <div class="menuElement">
+                Play sudoku
+            </div>
+        </a>
+        <a class="menuHref" (click)="onGameModeSelection('visualisation')">
+            <div class="menuElement">
+                Visualise resolver
+            </div>
+        </a>
+    </div>
+    <div class="menuRight">
+        <ng-container *ngFor="let element of menuElements">
+            <a class="menuHref" (click)="selectResolver(element)"> <!-- [ngClass]="getClass(element)" -->
+                <div [ngClass]="getClass(element)">
+                    {{element.menuTxt}}
+                </div>
+            </a>
+        </ng-container>
+    </div>
+</div>
