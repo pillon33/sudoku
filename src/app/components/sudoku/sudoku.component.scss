@@ -47,8 +47,7 @@
   touch-action: manipulation;
 }
 
-.button-1:hover,
-.button-1:focus {
+.button-1:hover {
   background-color: main.$mainColor3;
   color: main.$white;
 }
@@ -80,7 +79,6 @@
     touch-action: manipulation;
   }
   
-  .button-2:hover,
-  .button-2:focus {
+  .button-2:hover {
     background-color: main.$mainColor4;
   }
