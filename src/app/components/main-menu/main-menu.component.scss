@@ -1,5 +1,7 @@
+@use '../../common/styles/main.scss' as main;
+
 .menuElement {
-    background-color: #F2AFEF;
+    background-color: main.$mainColor1;
     text-align: center;
     padding-left: 10px;
     padding-right: 10px;
@@ -8,23 +10,24 @@
 }
 
 .menuElement:hover {
-    background-color: #C499F3;
+    background-color: main.$mainColor3;
+    color: main.$white;
 }
 
 a.menuHref {
     text-decoration: none;
-    color: #7360DF;
+    color: main.$mainColor3;
     user-select: none;
     cursor: pointer;
 }
 
 .selected {
-    color: #33186B;
-    background-color: #C499F3;
+    color: main.$mainColor4;
+    background-color: main.$mainColor2;
 }
 
 a.menuHref:hover {
-    color: #33186B;
+    color: main.$mainColor4;
 }
 
 .main {

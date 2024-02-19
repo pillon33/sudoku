@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { Sudoku } from '../../models/sudoku.model';
-import { SudokuService } from '../../services/sudoku.service';
-import { SudokuCalculationService } from '../../services/sudoku-calculation.service';
-import { SudokuDTO } from '../../models/sudoku-dto.model';
+import { Sudoku } from '../../../models/sudoku.model';
+import { SudokuService } from '../../../services/sudoku.service';
+import { SudokuCalculationService } from '../../../services/sudoku-calculation.service';
+import { SudokuDTO } from '../../../models/sudoku-dto.model';
 
 @Component({
   selector: 'sudoku-board',
