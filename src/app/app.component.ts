@@ -4,6 +4,7 @@ import { MainModule } from './modules/main/main.module';
 import { RouterModule } from '@angular/router';
 import { environment } from '../environments/environment';
 import { SudokuComponent } from './components/sudoku/sudoku.component';
+import { ResolverVisualisationComponent } from './components/resolver-visualisation/resolver-visualisation.component';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +28,7 @@ export class AppComponent {
   }
 
   onOutletLoaded(component: SudokuComponent | any) {
-    if (component instanceof SudokuComponent) {
+    if (component instanceof SudokuComponent || component instanceof ResolverVisualisationComponent) {
       component.resolver = this.resolver;
     }
   }

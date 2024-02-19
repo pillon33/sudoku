@@ -6,7 +6,7 @@ import { SudokuCellComponent } from '../../components/sudoku-cell/sudoku-cell.co
 import { HttpClientModule } from '@angular/common/http';
 import { MainMenuComponent } from '../../components/main-menu/main-menu.component';
 import { SudokuService } from '../../services/sudoku.service';
-import { ResolverVisualisationComponent } from '../../resolver-visualisation/resolver-visualisation.component'; 
+import { ResolverVisualisationComponent } from '../../components/resolver-visualisation/resolver-visualisation.component'; 
 import { FormsModule } from '@angular/forms'; 
 import { LandingPageComponent } from '../../components/landing-page/landing-page.component';
 

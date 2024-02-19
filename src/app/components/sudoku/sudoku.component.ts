@@ -20,17 +20,13 @@ export class SudokuComponent {
 
   solvedMsg: string = 'Sudoku solved!';
   numberOfFields: number = 5;
-
-  @Input("gameMode")
-  gameMode: string = '';
-
   
   @Input("resolver")
   resolver: string = '';
 
   constructor(
     private service: SudokuService
-    ) {}
+  ) {}
 
   ngOnInit(): void {
 
@@ -38,7 +34,6 @@ export class SudokuComponent {
 
   getNewPuzzle() {
     this.service.getBoardWithNumberOfFields(this.resolver, this.numberOfFields).subscribe((res) => {
-      console.log(res);
       if (res != undefined) {
         this.sudokuDtoModel.deserialize(res);
         this.sudokuBoardModel.fromDTO(this.sudokuDtoModel);

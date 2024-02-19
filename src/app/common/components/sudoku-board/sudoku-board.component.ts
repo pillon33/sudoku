@@ -13,6 +13,9 @@ export class SudokuBoardComponent implements OnInit {
   @Input("board") 
   sudokuBoardModel: Sudoku = new Sudoku();
 
+  @Input("isClickable")
+  isClickable: boolean = true;
+
   @Output("cellClick") 
   clickEvent: EventEmitter<number[]> = new EventEmitter();
 

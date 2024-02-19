@@ -18,20 +18,26 @@ export class SudokuCellComponent {
   @Input("isSelected")
   isSelected: boolean = false;
 
+  @Input("isClickable")
+  isClickable: boolean = true;
+
   cellStyleDictionary = {
     clue: 'cellWithClue',
     error: 'cellWithError',
     empty: 'emptyCell',
     selected: 'selectedCell',
-    selectedError: 'selectedCellWithError'
+    selectedError: 'selectedCellWithError',
+    selectable: 'selectable'
   }
 
   public getCellClass(): string {
     if (this.isClue) return this.cellStyleDictionary.clue;
-
-    if (this.hasError) return this.isSelected ? this.cellStyleDictionary.selectedError : this.cellStyleDictionary.error;
-
+    
     let style = '';
+
+    if (this.isClickable) style += this.cellStyleDictionary.selectable + ' ';
+
+    if (this.hasError) return style + (this.isSelected ? this.cellStyleDictionary.selectedError : this.cellStyleDictionary.error);
 
     if (this.isSelected) style += this.cellStyleDictionary.selected;
 

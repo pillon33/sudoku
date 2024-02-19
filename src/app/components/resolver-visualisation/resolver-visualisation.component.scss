@@ -1,0 +1,84 @@
+@use '../../common/styles/main.scss' as main;
+
+.main {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 10px;
+}
+
+.buttons {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 10px;
+}
+
+.button {
+    margin: 10px;
+}
+
+.button-1 {
+  margin: 5px;
+  background-color: main.$mainColor1;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: main.$mainColor3;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-1:hover {
+  background-color: main.$mainColor3;
+  color: main.$white;
+}
+
+.button-2 {
+    margin: 5px;
+    background-color: main.$mainColor3;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: main.$white;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    line-height: 20px;
+    list-style: none;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .button-2:hover {
+    background-color: main.$mainColor4;
+  }

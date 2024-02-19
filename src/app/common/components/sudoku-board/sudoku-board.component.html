@@ -8,6 +8,7 @@
                 [isClue]="cell.mask" 
                 [isSelected]="cell.isSelected" 
                 [hasError]="(cell.value !== cell.cell) && (cell.value !== 0)"
+                [isClickable]="isClickable"
                 (click)="onCellClick(r, c);"
                 >
                 </sudoku-cell>
