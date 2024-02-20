@@ -14,6 +14,7 @@ export class ResolverVisualisationComponent implements OnInit, OnDestroy {
   sudokuBoardModel: Sudoku = new Sudoku();
   sudokuDtoModel: SudokuDTO = new SudokuDTO();
   resolverMoves: ResolverMove[] = [];
+  shouldShowSolution: boolean = true;
   
   private selectedCellCoordinates: number[] = [-1, -1];
 
@@ -31,6 +32,7 @@ export class ResolverVisualisationComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.shouldShowSolution = false;
   }
 
   getNewPuzzle() {
@@ -66,6 +68,9 @@ export class ResolverVisualisationComponent implements OnInit, OnDestroy {
     let i = 0;
     
     while (i < this.resolverMoves.length) {
+      if (!this.shouldShowSolution) {
+        return;
+      }
       let move = this.resolverMoves.at(i);
       
       if (move === undefined) {
@@ -75,6 +80,8 @@ export class ResolverVisualisationComponent implements OnInit, OnDestroy {
       // get coordinates
       let row = move.row;
       let col = move.column;
+
+      console.log("row: %s, col: %s", row, col);
 
       // mark as selected
       this.sudokuBoardModel.cells[row][col].isSelected = true;
