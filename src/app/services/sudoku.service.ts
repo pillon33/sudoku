@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment'
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MenuElement } from '../models/menu-element.type';
+import { SudokuDTO } from '../models/sudoku-dto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,11 @@ export class SudokuService {
     const url = `${environment.getAvailableResolversEndpoint}`;
 
     return this.http.get(this.baseUrl + url) as (Observable<Object[]>);
+  }
+
+  public getResolverMoves(path: string, sudoku: SudokuDTO): Observable<Object[]> {
+    const url = `${path}${environment.getMovesEndpoint}`;
+    
+    return this.http.post(this.baseUrl + url, sudoku) as (Observable<Object[]>);
   }
 }
