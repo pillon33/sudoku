@@ -11,10 +11,7 @@ import { Router } from '@angular/router';
 })
 export class MainMenuComponent implements OnInit {
   public menuElements: MenuElement[] = [
-    new MenuElement().deserialize({name: 'sudoku', menuTxt: 'Sudoku', menuDescription: 'Complete sudoku component', redirectPath: 'sudoku'}),
-    new MenuElement().deserialize({name: 'sudoku-cell', menuTxt: 'Sudoku Cell', menuDescription: 'Sudoku cell component', redirectPath: 'sudoku-cell'}),
-    new MenuElement().deserialize({name: 'sudoku-board', menuTxt: 'Sudoku Board', menuDescription: 'Sudoku board generic component', redirectPath: 'sudoku-board'}),
-  ];
+    new MenuElement().deserialize({name: 'Backtracking Resolver', menuTxt: 'Backtracking Resolver', menuDescription: 'Backtracking Resolver', redirectPath: 'backtracking'})];
 
   selectedResolver: MenuElement = new MenuElement();
 
