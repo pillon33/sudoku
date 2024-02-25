@@ -1,16 +1,17 @@
-import { Component, HostListener, Input } from '@angular/core';
+import { Component, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
 import { Sudoku } from '../../models/sudoku.model';
 import { SudokuDTO } from '../../models/sudoku-dto.model';
 import { SudokuService } from '../../services/sudoku.service';
 import { SudokuCell } from '../../models/sudoku-cell.model';
 import { environment } from '../../../environments/environment';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-sudoku',
   templateUrl: './sudoku.component.html',
   styleUrl: './sudoku.component.scss'
 })
-export class SudokuComponent {
+export class SudokuComponent implements OnInit, OnDestroy {
   sudokuBoardModel: Sudoku = new Sudoku();
   sudokuDtoModel: SudokuDTO = new SudokuDTO();
 
@@ -20,16 +21,36 @@ export class SudokuComponent {
 
   solvedMsg: string = 'Sudoku solved!';
   numberOfFields: number = 5;
+
+  private eventsSubscription: Subscription = new Subscription;
+
   
   @Input("resolver")
-  resolver: string = '';
+  events: Observable<string> = new Observable();
+
+  resolver: string = environment.defaultEndpoint;
 
   constructor(
     private service: SudokuService
   ) {}
 
   ngOnInit(): void {
+    this.eventsSubscription = this.events.subscribe({
+      next: (event) => {
+        this.resolver = event;
+      },
+      error: (e) => {
+        console.error(e);
+      },
+      complete: () => {
+        this.sudokuBoardModel = new Sudoku();
+        this.sudokuDtoModel = new SudokuDTO();
+      }
+    });
+  }
 
+  ngOnDestroy(): void {
+    this.eventsSubscription.unsubscribe();
   }
 
   getNewPuzzle() {

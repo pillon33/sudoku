@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, Component, NO_ERRORS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, EventEmitter, NO_ERRORS_SCHEMA } from '@angular/core';
 import { AppModule } from './app.module';
 import { MainModule } from './modules/main/main.module';
 import { RouterModule } from '@angular/router';
@@ -18,9 +18,11 @@ export class AppComponent {
   title = 'sudoku';
   gameMode = environment.getPuzzleEndpoint;
   resolver = environment.defaultEndpoint;
+  resolverEmitter: EventEmitter<string> = new EventEmitter();
 
   onResolverChange(event: string) {
     this.resolver = event;
+    this.resolverEmitter.emit(event);
   }
 
   onGameModeChange(event: string) {
@@ -30,6 +32,7 @@ export class AppComponent {
   onOutletLoaded(component: SudokuComponent | any) {
     if (component instanceof SudokuComponent || component instanceof ResolverVisualisationComponent) {
       component.resolver = this.resolver;
+      component.events = this.resolverEmitter;
     }
   }
 }

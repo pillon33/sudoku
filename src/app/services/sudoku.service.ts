@@ -22,7 +22,9 @@ export class SudokuService {
     const url = `${path}${environment.getPuzzleEndpoint}`;
 
     let params: HttpParams = new HttpParams({});
-    params = params.append("numberOfFields", numberOfFields)
+    params = params.append("numberOfFields", numberOfFields);
+
+    console.log(this.baseUrl + url);
     
     return this.http.get(this.baseUrl + url, {params: params});
   }
@@ -30,11 +32,15 @@ export class SudokuService {
   public getAvailableResolversList(): Observable<Object[]> {
     const url = `${environment.getAvailableResolversEndpoint}`;
 
+    console.log(this.baseUrl + url);
+
     return this.http.get(this.baseUrl + url) as (Observable<Object[]>);
   }
 
   public getResolverMoves(path: string, sudoku: SudokuDTO): Observable<Object[]> {
     const url = `${path}${environment.getMovesEndpoint}`;
+
+    console.log(this.baseUrl + url);
     
     return this.http.post(this.baseUrl + url, sudoku) as (Observable<Object[]>);
   }

@@ -4,6 +4,8 @@ import { SudokuService } from '../../services/sudoku.service';
 import { SudokuDTO } from '../../models/sudoku-dto.model';
 import { Sudoku } from '../../models/sudoku.model';
 import { ResolverMove } from '../../models/resolver-move.model';
+import { Observable, Subscription } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-resolver-visualisation',
@@ -15,24 +17,39 @@ export class ResolverVisualisationComponent implements OnInit, OnDestroy {
   sudokuDtoModel: SudokuDTO = new SudokuDTO();
   resolverMoves: ResolverMove[] = [];
   shouldShowSolution: boolean = true;
-  
-  private selectedCellCoordinates: number[] = [-1, -1];
 
   numberOfFields: number = 40;
+  private eventsSubscription: Subscription = new Subscription;
+
   
   @Input("resolver")
-  resolver: string = '';
+  events: Observable<string> = new Observable();
+
+  resolver: string = environment.defaultEndpoint;
 
   constructor(
     private service: SudokuService
     ) {}
 
-  ngOnInit(): void {
-
-  }
+    ngOnInit(): void {
+      this.eventsSubscription = this.events.subscribe({
+        next: (event) => {
+          this.resolver = event;
+        },
+        error: (e) => {
+          console.error(e);
+        },
+        complete: () => {
+          this.shouldShowSolution = false;
+          this.sudokuBoardModel = new Sudoku();
+          this.sudokuDtoModel = new SudokuDTO();
+        }
+      });
+    }
 
   ngOnDestroy(): void {
     this.shouldShowSolution = false;
+    this.eventsSubscription.unsubscribe();
   }
 
   getNewPuzzle() {
@@ -44,6 +61,7 @@ export class ResolverVisualisationComponent implements OnInit, OnDestroy {
         }
       },
       complete: () => {
+        this.shouldShowSolution = true;
         this.getSolution();
       }});
   }
