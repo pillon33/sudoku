@@ -4,6 +4,7 @@ import { SudokuCell } from "./sudoku-cell.model";
 
 export class Sudoku {
     public cells: SudokuCell[][] = [];
+    public score: number = 0;
 
     constructor() {
         let cellsTmp: SudokuCell[][] = [];
@@ -51,6 +52,7 @@ export class Sudoku {
         }
 
         this.cells = cellsTmp;
+        this.score = dto.score;
 
         return this;
     }
