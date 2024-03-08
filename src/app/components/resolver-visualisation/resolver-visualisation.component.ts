@@ -19,6 +19,8 @@ export class ResolverVisualisationComponent implements OnInit, OnDestroy {
   shouldShowSolution: boolean = true;
 
   numberOfFields: number = 40;
+  delta: number = 0.5;
+  deltaMultiplier: number = 1;
   private eventsSubscription: Subscription = new Subscription;
 
   
@@ -99,18 +101,16 @@ export class ResolverVisualisationComponent implements OnInit, OnDestroy {
       let row = move.row;
       let col = move.column;
 
-      console.log("row: %s, col: %s", row, col);
-
       // mark as selected
       this.sudokuBoardModel.cells[row][col].isSelected = true;
-      await this.sleep(500);
+      await this.sleep(this.delta*1000/this.deltaMultiplier);
 
       // deselect
       this.sudokuBoardModel.cells[row][col].isSelected = false;
 
       //insert value
       this.sudokuBoardModel.cells[row][col].value = move.insertedValue;
-      await this.sleep(500);
+      await this.sleep(this.delta*1000/this.deltaMultiplier);
 
       i++;
     }
