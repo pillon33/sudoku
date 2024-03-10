@@ -21,6 +21,7 @@ export class ResolverVisualisationComponent implements OnInit, OnDestroy {
   numberOfFields: number = 40;
   delta: number = 0.5;
   deltaMultiplier: number = 1;
+  activeSolutionId = 0;
   private eventsSubscription: Subscription = new Subscription;
 
   
@@ -79,18 +80,29 @@ export class ResolverVisualisationComponent implements OnInit, OnDestroy {
           }
         },
         complete: () => {
-          this.showSolution();
+          this.startVisualisation();
         }
       });
   }
 
-  async showSolution() {
+  startVisualisation() {
+    let id = Math.floor(Math.random()*100_000_000);
+    this.activeSolutionId = id;
+    this.showSolution(id);
+  }
+
+  async showSolution(id: number) {
     let i = 0;
     
     while (i < this.resolverMoves.length) {
       if (!this.shouldShowSolution) {
         return;
       }
+      
+      if (this.activeSolutionId != id) {
+        return;
+      }
+
       let move = this.resolverMoves.at(i);
       
       if (move === undefined) {
@@ -105,9 +117,18 @@ export class ResolverVisualisationComponent implements OnInit, OnDestroy {
       this.sudokuBoardModel.cells[row][col].isSelected = true;
       await this.sleep(this.delta*1000/this.deltaMultiplier);
 
+      
       // deselect
       this.sudokuBoardModel.cells[row][col].isSelected = false;
-
+      
+      if (!this.shouldShowSolution) {
+        return;
+      }
+      
+      if (this.activeSolutionId != id) {
+        return;
+      }
+      
       //insert value
       this.sudokuBoardModel.cells[row][col].value = move.insertedValue;
       await this.sleep(this.delta*1000/this.deltaMultiplier);
